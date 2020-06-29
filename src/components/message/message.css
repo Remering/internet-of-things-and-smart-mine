@@ -1,0 +1,4 @@
+.message {
+    margin-top: cal(100vh - 32px);
+    position: fixed;
+}

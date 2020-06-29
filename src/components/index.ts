@@ -1,0 +1,5 @@
+export { default as Page } from './page/Page'
+export { default as IndexNavBar } from './navBar/IndexNavBar'
+export { default as SearchBar } from './searchBar/SearchBar'
+export { default as Message } from './message/Message'
+export { default as ActionSheet } from './actionSheet/ActionSheet'
