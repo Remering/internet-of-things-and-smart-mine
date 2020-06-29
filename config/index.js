@@ -26,11 +26,13 @@ const config = {
           regenerator: true,
           moduleName: 'babel-runtime'
         }
-      ]
+      ],
+
     ]
   },
   defineConstants: {
   },
+  plugins: ['@tarojs/plugin-sass'],
   mini: {
     postcss: {
       autoprefixer: {
