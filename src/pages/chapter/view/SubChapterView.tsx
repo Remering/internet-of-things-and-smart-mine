@@ -165,4 +165,5 @@ const mapDispatchToProps: InjectedSubChapterViewProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubChapterView) as unknown as Taro.ComponentClass<SubChapterViewProps>;
+// @ts-ignore
+export default connect(mapStateToProps, mapDispatchToProps)(SubChapterView) as Taro.ComponentClass<SubChapterViewProps>;

@@ -1,22 +1,22 @@
-import {createEpicMiddleware} from 'redux-observable'
-import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
-import chapterReducer from './chapter'
-
-import * as selectors from './selectors'
-
-export default {
-  ...selectors
-}
+import { createEpicMiddleware } from 'redux-observable'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import { createLogger } from 'redux-logger'
+import { bookReducer } from './book'
+import { messageReducer } from './message';
+import { actionSheetReducer } from './actionSheet';
 
 const epicMiddleware = createEpicMiddleware();
 
 export const store = createStore(
   combineReducers({
-    chapter: chapterReducer
+    book: bookReducer,
+    message: messageReducer,
+    actionSheet: actionSheetReducer,
   }),
   compose(
     applyMiddleware(
       epicMiddleware,
+      createLogger(),
     )
   )
 )

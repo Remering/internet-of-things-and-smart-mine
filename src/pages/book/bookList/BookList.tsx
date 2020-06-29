@@ -1,35 +1,34 @@
 import Taro from '@tarojs/taro'
-import { ScrollView } from '@tarojs/components'
-import { ClMenuList } from 'mp-colorui';
+import {ScrollView, View} from '@tarojs/components'
+
 
 import './book-list.css'
 import {Entries} from '../../../types/entries';
-import {BookType} from '../../../types/book';
+import {Book} from '../../../types/book';
+import BookListItem from "./BookListItem";
 
 interface BookListProps {
-  entry: Entries<BookType>
+  entries: Entries<Book>
 }
 
-const BookList: Taro.FC<BookListProps> = ({entry}) => {
+const BookList: Taro.FC<BookListProps> = ({entries}) => {
 
-  const itemLists = Object.entries<BookType>(entry)
-    .map(
-      ([uuid, book] ) => ({
-        title: book.name,
-        async onClick() {
-          await Taro.navigateTo({
-            url: `pages/chapter/index?uuid=${uuid}`
-
-          })
-        }
-      })
-    )
-
+  if (!entries) return (
+    <View />
+  )
 
   return (
 
-    <ScrollView className='bookList'>
-      <ClMenuList list={itemLists} />
+    <ScrollView className='scroll-view' >
+      {
+        Object.entries<Book>(entries).map(
+          (entry) => {
+            const [uuid, book] = entry;
+            return (
+              <BookListItem book={book} uuid={uuid} key={uuid} />
+            )
+          })
+      }
     </ScrollView>
   )
 }
