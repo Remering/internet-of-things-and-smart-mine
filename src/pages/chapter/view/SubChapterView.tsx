@@ -52,6 +52,7 @@ const SubChapterView: Taro.FC<SubChapterViewProps & InjectedSubChapterViewProps>
       .map((entry, contentIndex) => {
         const [contentUUID, content] = entry;
         const {url, type} = content;
+        const downloadTask = null as DownloadTask | null
         return {
           title: `${prefix}.${contentIndex + 1} ${content.name}`,
           uuid: contentUUID,
@@ -60,7 +61,7 @@ const SubChapterView: Taro.FC<SubChapterViewProps & InjectedSubChapterViewProps>
           },
           url,
           type,
-          downloadTask: null as DownloadTask | null
+          downloadTask
         }
       })
 
